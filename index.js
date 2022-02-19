@@ -229,7 +229,7 @@ client.on('interactionCreate', (interaction) => {
                 .setDescription(chunk.join('\n'));
             
                 interaction.channel.send({ embeds: [embed] });
-            }}
+            });
               case 'uptime': {
                    let days = Math.floor(client.uptime / 86400000 );
   let hours = Math.floor(client.uptime / 3600000 ) % 24;
