@@ -1,4 +1,4 @@
-const config = require('./config.json');
+const config = require('./config.js');
 
 const Database = require('easy-json-database');
 const db = new Database('./db.json');
