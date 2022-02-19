@@ -27,6 +27,7 @@ synchronizeSlashCommands(client, [
                 type: 7,
                 required: true
             }
+         
         ]
     },
     {
@@ -44,6 +45,11 @@ synchronizeSlashCommands(client, [
     {
         name: 'abonnements',
         description: 'Accèdez à la liste de tous vos abonnements',
+        options: []
+    },
+     {
+        name: 'uptime',
+        description: 'Affiche le temps connecté du bot',
         options: []
     }
 ], {
@@ -165,7 +171,7 @@ client.on('ready', () => {
     setInterval(sync, 15000);
 
     const { version } = require('./package.json');
-    client.user.setActivity(`Vinted BOT | v${version}`);
+    client.user.setActivity(`Vinted Bot <3`);
 });
 
 client.on('interactionCreate', (interaction) => {
@@ -211,6 +217,7 @@ client.on('interactionCreate', (interaction) => {
                     lastChunk.push(content);
                     chunks.push(lastChunk);
                 }
+              
             });
     
             interaction.reply(`:white_check_mark: **${subscriptions.length}** abonnements sont actifs !`);
@@ -223,8 +230,17 @@ client.on('interactionCreate', (interaction) => {
             
                 interaction.channel.send({ embeds: [embed] });
             });
+              case 'uptime': {
+                   let days = Math.floor(client.uptime / 86400000 );
+  let hours = Math.floor(client.uptime / 3600000 ) % 24;
+  let minutes = Math.floor(client.uptime / 60000) % 60;
+  let seconds = Math.floor(client.uptime / 1000) % 60;
+                  interaction.reply(`${days}jours ${hours}heures ${minutes}minutes ${seconds}secondes`);
+                }
         }
     }
 });
+            
+     
 
 client.login(process.env.TOKEN);
