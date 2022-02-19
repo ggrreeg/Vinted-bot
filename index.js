@@ -230,13 +230,7 @@ client.on('interactionCreate', (interaction) => {
             
                 interaction.channel.send({ embeds: [embed] });
             });
-              case 'uptime': {
-                   let days = Math.floor(client.uptime / 86400000 );
-  let hours = Math.floor(client.uptime / 3600000 ) % 24;
-  let minutes = Math.floor(client.uptime / 60000) % 60;
-  let seconds = Math.floor(client.uptime / 1000) % 60;
-                  interaction.reply(`${days}jours ${hours}heures ${minutes}minutes ${seconds}secondes`);
-                });
+              
         }
     }
 });
